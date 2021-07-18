@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+    node_app:
+        build:
+            context: ./node_app
+        ports:
+            - "3000-3004:3000"
+    nginx:
+        restart: always
+        build:
+            context: ./nginx
+        container_name: nginx
+        ports:
+            - "8000:80"
