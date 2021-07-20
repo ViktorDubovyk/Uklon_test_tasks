@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: node-app
+  name: node-app
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - image: vets/test_uklon:latest
+        imagePullPolicy: Always
